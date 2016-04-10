@@ -38,6 +38,19 @@ task Compile -depends RestoreNuget {
     exec { msbuild /nologo /verbosity:quiet $solutionFilePath /p:Configuration=Release /p:platform="Any CPU"}
 }
 
+task PreparePackagge -depends Compile {
+    New-Item $mergedDir -Type Directory -ErrorAction SilentlyContinue
+
+    $mainDllName = "Greenleaf.Phone"
+    $dllDir = "$srcDir\$mainDllName\Bin\Release"
+    $inputDlls = "$dllDir\Greenleaf*.dll"
+    $inputPdbs = "$dllDir\Greenleaf*.pdb"
+    Copy-Item -Path $inputDlls -Destination $mergedDir
+    Copy-Item -Path $inputPdbs -Destination $mergedDir
+    
+    ##Invoke-Expression "$ilmergePath /targetplatform:v4 /internalize /wildcards /allowDup /target:library /log /out:$mergedDir\$mainDllName.dll $inputDlls"
+}
+
 task ILMerge -depends Compile {
     New-Item $mergedDir -Type Directory -ErrorAction SilentlyContinue
 
@@ -47,7 +60,7 @@ task ILMerge -depends Compile {
     Invoke-Expression "$ilmergePath /targetplatform:v4 /internalize /wildcards /allowDup /target:library /log /out:$mergedDir\$mainDllName.dll $inputDlls"
 }
 
-task CreateNuGetPackages -depends ILMerge {
+task CreateNuGetPackages -depends PreparePackagge {
     $versionString = Get-Version $assemblyInfoFilePath
     $version = New-Object Version $versionString
     $packageVersion = $version.Major.ToString() + "." + $version.Minor.ToString() + "." + $version.Build.ToString() + "-build" + $buildNumber.ToString().PadLeft(5,'0')

@@ -19,6 +19,8 @@
         </dependencies>
     </metadata>
     <files>
+        <file src="..\..\build\merged\Greenleaf.Common.dll" target="lib\WPA81" />
+        <file src="..\..\build\merged\Greenleaf.Common.pdb" target="lib\WPA81" />
         <file src="..\..\build\merged\Greenleaf.Phone.dll" target="lib\WPA81" />
         <file src="..\..\build\merged\Greenleaf.Phone.pdb" target="lib\WPA81" />
     </files>
