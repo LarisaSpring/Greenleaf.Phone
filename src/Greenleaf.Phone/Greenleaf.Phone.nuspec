@@ -16,6 +16,7 @@
         <frameworkAssemblies />
         <releaseNotes/>
         <dependencies>
+			<dependency id="Unity" version="4.0.1" />
         </dependencies>
     </metadata>
     <files>
