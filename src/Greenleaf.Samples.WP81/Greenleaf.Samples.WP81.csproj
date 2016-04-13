@@ -131,7 +131,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Greenleaf.Phone, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Greenleaf.Phone.1.0.0.2\lib\WPA81\Greenleaf.Phone.dll</HintPath>
+      <HintPath>..\packages\Greenleaf.Phone.1.0.0.4\lib\WPA81\Greenleaf.Phone.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
