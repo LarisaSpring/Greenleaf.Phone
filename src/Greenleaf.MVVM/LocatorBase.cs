@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Practices.Unity;
 
-namespace Greenleaf.Phone
+namespace Greenleaf.MVVM
 {
     public class LocatorBase
     {

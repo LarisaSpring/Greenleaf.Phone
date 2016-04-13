@@ -41,6 +41,13 @@ task Compile -depends RestoreNuget {
 task PreparePackagge -depends Compile {
     New-Item $mergedDir -Type Directory -ErrorAction SilentlyContinue
 
+    $mainDllName = "Greenleaf.MVVM"
+    $dllDir = "$srcDir\$mainDllName\Bin\Release"
+    $inputDlls = "$dllDir\Greenleaf*.dll"
+    $inputPdbs = "$dllDir\Greenleaf*.pdb"
+    Copy-Item -Path $inputDlls -Destination $mergedDir
+    Copy-Item -Path $inputPdbs -Destination $mergedDir
+    
     $mainDllName = "Greenleaf.Phone"
     $dllDir = "$srcDir\$mainDllName\Bin\Release"
     $inputDlls = "$dllDir\Greenleaf*.dll"
@@ -48,7 +55,12 @@ task PreparePackagge -depends Compile {
     Copy-Item -Path $inputDlls -Destination $mergedDir
     Copy-Item -Path $inputPdbs -Destination $mergedDir
     
-    ##Invoke-Expression "$ilmergePath /targetplatform:v4 /internalize /wildcards /allowDup /target:library /log /out:$mergedDir\$mainDllName.dll $inputDlls"
+    $mainDllName = "Greenleaf.UWP"
+    $dllDir = "$srcDir\$mainDllName\Bin\Release"
+    $inputDlls = "$dllDir\Greenleaf*.dll"
+    $inputPdbs = "$dllDir\Greenleaf*.pdb"
+    Copy-Item -Path $inputDlls -Destination $mergedDir
+    Copy-Item -Path $inputPdbs -Destination $mergedDir
 }
 
 task ILMerge -depends Compile {

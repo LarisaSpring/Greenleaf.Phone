@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace Greenleaf.Phone
+namespace Greenleaf.MVVM
 {
-    public class AsyncDelegateCommand<T> : IRaisableCommand where T : class
+    public class DelegateCommand<T> : IRaisableCommand where T : class
     {
-        private readonly Func<T, Task> _executeAction;
+        private readonly Action<T> _executeAction;
         private readonly Predicate<T> _canExecutePredicate;
 
-        public AsyncDelegateCommand(Func<T, Task> executeAction, Predicate<T> canExecutePredicate = null)
+        public DelegateCommand(Action<T> executeAction, Predicate<T> canExecutePredicate = null)
         {
             _executeAction = executeAction;
             _canExecutePredicate = canExecutePredicate;
@@ -28,16 +26,11 @@ namespace Greenleaf.Phone
             return false;
         }
 
-        async void ICommand.Execute(object parameter)
-        {
-            await Execute(parameter);
-        }
-
-        public async Task Execute(object parameter)
+        public void Execute(object parameter)
         {
             if (_executeAction != null && (parameter == null || parameter is T))
             {
-                await _executeAction((T)parameter);
+                _executeAction((T)parameter);
             }
         }
 

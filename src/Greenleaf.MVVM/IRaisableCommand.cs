@@ -1,7 +1,7 @@
 ﻿
 using System.Windows.Input;
 
-namespace Greenleaf.Phone
+namespace Greenleaf.MVVM
 {
     public interface IRaisableCommand : ICommand
     {

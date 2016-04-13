@@ -1,26 +1,28 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Greenleaf.Phone</id>
+    <id>Greenleaf.MVVM</id>
     <version>0.0.0.0</version>
     <authors>Larisa Gavriljuk</authors>
     <owners>Larisa Gavriljuk</owners>
     <projectUrl>https://github.com/LarisaSpring/Greenleaf.Phone</projectUrl>
     <licenseUrl>https://github.com/LarisaSpring/Greenleaf.Phone/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <title>Greenleaf - Windows Phone</title>
+    <title>Greenleaf - MVVM</title>
     <description>
-      Yet another Windows Phone library.
+      Yet another MVVM library.
     </description>
-    <tags>windows-phone windowsphone</tags>
+    <tags>windows-phone windowsphone universalapp uwp mvvm</tags>
     <frameworkAssemblies />
     <releaseNotes/>
     <dependencies>
-      <dependency id="Greenleaf.MVVM" version="1.0.0" />
+      <dependency id="Unity" version="4.0.1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\build\merged\Greenleaf.Phone.dll" target="lib\WPA81" />
-    <file src="..\..\build\merged\Greenleaf.Phone.pdb" target="lib\WPA81" />
+    <file src="..\..\build\merged\Greenleaf.Common.dll" target="lib\Portable-Net46+Win81+WPA81" />
+    <file src="..\..\build\merged\Greenleaf.Common.pdb" target="lib\Portable-Net46+Win81+WPA81" />
+    <file src="..\..\build\merged\Greenleaf.MVVM.dll" target="lib\Portable-Net46+Win81+WPA81" />
+    <file src="..\..\build\merged\Greenleaf.MVVM.pdb" target="lib\Portable-Net46+Win81+WPA81" />
   </files>
 </package>

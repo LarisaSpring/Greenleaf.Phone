@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
-namespace Greenleaf.Phone
+namespace Greenleaf.MVVM
 {
     public abstract class NavigationManagerBase : INavigationManager
     {
@@ -56,6 +57,15 @@ namespace Greenleaf.Phone
             ClearHistoryImpl();
         }
 
+        public void Register<T>()
+        {
+            var pageName = typeof(T).Name;
+            pageName = Regex.Replace(pageName, "(page|view)$", string.Empty, RegexOptions.IgnoreCase | RegexOptions.Singleline)
+                .Trim()
+                .ToLower();
+            Register<T>(pageName);
+        }
+
         public void Register<T>(string route)
         {
             Type type;
@@ -71,7 +81,7 @@ namespace Greenleaf.Phone
         private void SetPrevious()
         {
             var current = GetCurrentPage();
-            
+
             if (_map.ContainsValue(current.GetType()))
             {
                 Previous = _map.First(x => x.Value == current.GetType()).Key;
