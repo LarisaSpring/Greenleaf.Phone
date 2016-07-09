@@ -20,9 +20,9 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\build\merged\Greenleaf.Common.dll" target="lib\Portable-Net46+Win81+WPA81" />
-    <file src="..\..\build\merged\Greenleaf.Common.pdb" target="lib\Portable-Net46+Win81+WPA81" />
-    <file src="..\..\build\merged\Greenleaf.MVVM.dll" target="lib\Portable-Net46+Win81+WPA81" />
-    <file src="..\..\build\merged\Greenleaf.MVVM.pdb" target="lib\Portable-Net46+Win81+WPA81" />
+    <file src="..\..\build\merged\Greenleaf.Common.dll" target="lib\Portable-net45+Win81+WPA81" />
+    <file src="..\..\build\merged\Greenleaf.Common.pdb" target="lib\Portable-net45+Win81+WPA81" />
+    <file src="..\..\build\merged\Greenleaf.MVVM.dll" target="lib\Portable-net45+Win81+WPA81" />
+    <file src="..\..\build\merged\Greenleaf.MVVM.pdb" target="lib\Portable-net45+Win81+WPA81" />
   </files>
 </package>

@@ -96,24 +96,24 @@ namespace Greenleaf.MVVM
             {
                 _changedProperties[propertyName] = null;
             }
-            
-            var handler = PropertyChanged;
 
-            if (handler != null)
+            PropertyChangedEventArgs value;
+
+            lock (_cache)
             {
-                PropertyChangedEventArgs value;
-                
-                lock (_cache)
+                if (!_cache.TryGetValue(propertyName, out value))
                 {
-                    if (!_cache.TryGetValue(propertyName, out value))
-                    {
-                        value = new PropertyChangedEventArgs(propertyName);
-                        _cache.Add(propertyName, value);
-                    }
+                    value = new PropertyChangedEventArgs(propertyName);
+                    _cache.Add(propertyName, value);
                 }
-
-                handler(this, value);
             }
+
+            OnPropertyChanged(value);
+        }
+
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            PropertyChanged?.Invoke(this, args);
         }
 
         /// <summary>
