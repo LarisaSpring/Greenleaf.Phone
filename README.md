@@ -1,2 +1,2 @@
 # Greenleaf.Phone
-Yet another Windows Phone library.
+Windows Phone and Universal platform applications framework to simplify MVVM pattern implementation, navigation inside application and dependency resolving.
