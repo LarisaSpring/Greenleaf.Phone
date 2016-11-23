@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace Greenleaf.MVVM
 {
-    public class AsyncDelegateCommand<T> : IRaisableCommand where T : class
+    public class AsyncDelegateCommand<T> : IRaisableCommand, IAsyncCommand where T : class
     {
         private readonly Func<T, Task> _executeAction;
         private readonly Predicate<T> _canExecutePredicate;
@@ -30,10 +30,10 @@ namespace Greenleaf.MVVM
 
         async void ICommand.Execute(object parameter)
         {
-            await Execute(parameter);
+            await ExecuteAsync(parameter);
         }
 
-        public async Task Execute(object parameter)
+        public async Task ExecuteAsync(object parameter)
         {
             if (_executeAction != null && (parameter == null || parameter is T))
             {

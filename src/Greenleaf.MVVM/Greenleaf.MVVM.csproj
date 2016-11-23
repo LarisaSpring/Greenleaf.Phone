@@ -39,6 +39,7 @@
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="INavigationManager.cs" />
     <Compile Include="IRaisableCommand.cs" />
+    <Compile Include="IAsyncCommand.cs" />
     <Compile Include="LocatorBase.cs" />
     <Compile Include="NavigationManagerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
